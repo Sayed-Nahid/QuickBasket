@@ -17,31 +17,40 @@
         <!--Navbar start-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">Navbar</a>
+              <a class="navbar-brand" href=""><img src="{% static 'app/images/logo.png' %}" width="100%" height="50"/></a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link active" aria-current="page" href="">Home</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Dropdown
+                      Products
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Milk</a></li>
                       <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      <li><a class="dropdown-item" href="#">Curd</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Milkshake</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Lassi</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Paneer</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Cheese</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Ice-creams</a></li>
                     </ul>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    <a class="nav-link text-white" href="#">About Us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link test-white" href="#">Contact</a>
                   </li>
                 </ul>
                 <form class="d-flex">
@@ -49,6 +58,29 @@
                   <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
               </div>
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown mx-2">
+                  <a class="nav-link dropdown-toggle text-white" href="" id="profileDropDown" role="button" data-bs-toggle="dropdown" arial-expanded="false">Sayed Nahid</a>
+                  <ul class="dropdown-menu" aria-labelledby="profileDropDown">
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="#">Orders</a></li>
+                    <li><a class="dropdown-item" href="#">Change Password</a></li>
+                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item mx-2">
+                  <a href="#" class="nav-link text-white">Cart 4</a>
+                </li>
+                <li class="nav-item mx-2">
+                  <a href="#" class="nav-link text-white">Wishlist 4</a>
+                </li>
+                <li class="nav-item mx-2">
+                  <a href="#" class="nav-link text-white">Login</a>
+                </li>
+                <li class="nav-item mx-2">
+                  <a href="#" class="nav-link text-white">Registration</a>
+                </li>
+              </ul>
             </div>
           </nav>
         <!--Navbar start-->
@@ -58,6 +90,7 @@
 
 
         <!--Blocks are start here-->
+        {% block banner_slider %}{% endblock banner_slider %}
         {% block main.content %}{% endblock main.content %}
         <!--Blocks are ends here-->
 
@@ -65,7 +98,7 @@
 
 
         <!-- start footer section -->
-          <footer class="bg-body-tertiary text-center">
+          <footer class="bg-dark text-center">
             <!-- Grid container -->
             <div class="container p-4 pb-0">
               <!-- Section: Social media -->
@@ -134,9 +167,9 @@
             <!-- Grid container -->
           
             <!-- Copyright -->
-            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-              © 2020 Copyright:
-              <a class="text-body" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+            <div class="text-center p-3 text-white" >
+              © 2024 Copyright:
+              <a class="text-white" href="">Sayed Nahid</a>
             </div>
             <!-- Copyright -->
           </footer>
