@@ -6,7 +6,10 @@ from django.db.models import Count
 # Create your views here.
 def home(request):
     return render(request, "app/home.html")
-
+def about(request):
+    return render(request, "app/about.html")
+def contact(request):
+    return render(request, "app/contact.html")
 #Category page for showing different types of product according to their category
 class CategoryView(View):
     def get(self, request, val):
