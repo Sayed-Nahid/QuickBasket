@@ -125,15 +125,26 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
+
+
+
+
+
+
+
+
 ##STATICFILES_DIRS = [BASE_DIR / "static"]
 #MEDIA__URL = '/media/'
 #MEDIA_ROOT = BASE_DIR/'media'
 
-#writing my code 
 #From here i'm going to add my codes
+#media Redirect
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
+#static Redirect
 STATIC_URL = '/myapp/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'myapp/static')]
+
+#account redirect
+LOGIN_REDIRECT_URL = '/profile/'

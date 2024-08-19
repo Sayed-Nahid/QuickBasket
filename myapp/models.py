@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 CATEGORY_CHOICES=(
     ('CR', 'Curd'),
@@ -10,6 +11,19 @@ CATEGORY_CHOICES=(
     ('CZ', 'Cheese'),
     ('IC', 'Ice-Creams'),
 )
+
+DIV_CHOICES=(
+    ('Dhaka', 'Dhaka'),
+    ('Rajshahi', 'Rajshahi'),
+    ('Rangpur', 'Rangpur'),
+    ('Mymensingh', 'Mymensingh'),
+    ('Khulna', 'Khulna'),
+    ('Chattogram', 'Chattogram'),
+    ('Sylhet', 'Sylhet'),
+    ('Barishal', 'Barishal'),
+)
+
+
 
 # Create your models here.
 class Product(models.Model):
@@ -23,3 +37,14 @@ class Product(models.Model):
     product_image = models.ImageField(upload_to='product')
     def __str__(self):
         return self.title
+
+class Customer(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
+    locality = models.CharField(max_length=200)
+    city = models.CharField(max_length=50)
+    mobile = models.IntegerField(default=0)
+    zipcode = models.IntegerField()
+    division = models.CharField(choices=DIV_CHOICES, max_length=100)
+    def __str__(self):
+        return self.name
