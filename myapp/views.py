@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from urllib import request
 from django.views import View
 from . models import Product, Customer
@@ -74,3 +74,25 @@ class ProfileView(View):
 def address(request):
     add = Customer.objects.filter(user=request.user)
     return render(request, 'app/address.html', locals())
+
+#update address
+class updateAddress(View):
+    def get(self, request, pk):
+        add = Customer.objects.get(pk=pk)
+        form = CustomerProfileForm(instance=add)
+        return render(request, 'app/updateAddress.html', locals())
+    def post(self, request, pk):
+        form = CustomerProfileForm(request.POST)
+        if form.is_valid():
+            add = Customer.objects.get(pk=pk)
+            add.name = form.cleaned_data['name']
+            add.locality = form.cleaned_data['locality']
+            add.city = form.cleaned_data['city']
+            add.mobile = form.cleaned_data['mobile']
+            add.division = form.cleaned_data['division']
+            add.zipcode = form.cleaned_data['zipcode']
+            add.save()
+            messages.success(request, "Congratulations! Profile data is Updated successfully.")
+        else:
+            messages.warning(request, "ofs! Invalid Input data.")
+        return redirect('address')

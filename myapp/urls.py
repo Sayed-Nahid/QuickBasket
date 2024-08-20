@@ -21,4 +21,5 @@ urlpatterns = [
     #User info URLs
     path('profile/', views.ProfileView.as_view(), name="profile"),
     path('address/', views.address, name='address'),
+    path("updateAddress/<int:pk>", views.updateAddress.as_view(), name="updateAddress"),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

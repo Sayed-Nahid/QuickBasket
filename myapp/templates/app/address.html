@@ -24,11 +24,13 @@
                                 <p>City: {{ad.city}}</p>
                                 <p>Division: {{ad.division}}</p>
                                 <p>PIN Code: {{ad.zipcode}}</p>
-                                <p class="text-center"><a href="#" type="button" class="btn btn-success">Update</a></p>
+                                <p class="text-center"><a href="{% url 'updateAddress' pk=ad.id %}" type="button" class="btn btn-success">Update</a></p>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
             </div>
         </div>
+    </div>
+</div>
 {% endblock main.content %}
