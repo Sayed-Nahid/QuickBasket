@@ -5,7 +5,11 @@ from . models import Product, Customer
 from django.db.models import Count
 from . forms import CustomerRegistrationForm, CustomerProfileForm
 from django.contrib import messages
+from django.contrib.auth import logout
 
+def logout_view(request):
+    logout(request)
+    return redirect('login')
 
 # Create your views here.
 def home(request):
