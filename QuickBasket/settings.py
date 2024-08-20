@@ -148,3 +148,5 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'myapp/static')]
 
 #account redirect
 LOGIN_REDIRECT_URL = '/profile/'
+#password reset mail destination
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"

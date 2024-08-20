@@ -48,10 +48,11 @@ class CustomerRegistrationView(View):
         if form.is_valid():
             form.save()
             messages.success(request, "Congratulations! User Registration Complete.")
+            return redirect('login')
         else:
             messages.warning(request, "Ofs! Please try again.")
         return render(request, "app/customerregistrationform.html", locals())
-
+#
 #profile view    
 class ProfileView(View):
     def get(self, request):
