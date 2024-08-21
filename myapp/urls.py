@@ -30,4 +30,8 @@ urlpatterns = [
     path('profile/', views.ProfileView.as_view(), name="profile"),
     path('address/', views.address, name='address'),
     path("updateAddress/<int:pk>", views.updateAddress.as_view(), name="updateAddress"),
+    #add to cart URLs
+    path('add-to-cart/', views.add_to_cart, name="add-to-cart"),
+    path('cart/', views.show_cart, name="showcart"),
+    path('checkout/', views.show_cart, name="checkout"),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

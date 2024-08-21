@@ -48,3 +48,12 @@ class Customer(models.Model):
     division = models.CharField(choices=DIV_CHOICES, max_length=100)
     def __str__(self):
         return self.name
+    
+#model for cart
+class Cart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+    @property
+    def total_cost(self):
+        return self.quantity * self.product.discounted_price
