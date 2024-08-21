@@ -34,4 +34,7 @@ urlpatterns = [
     path('add-to-cart/', views.add_to_cart, name="add-to-cart"),
     path('cart/', views.show_cart, name="showcart"),
     path('checkout/', views.show_cart, name="checkout"),
+    #add to cart quantity increment decrement using Ajax path
+    path('pluscart/', views.plus_cart),
+    path('minuscart/', views.minus_cart),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

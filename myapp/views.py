@@ -6,6 +6,9 @@ from django.db.models import Count
 from . forms import CustomerRegistrationForm, CustomerProfileForm
 from django.contrib import messages
 from django.contrib.auth import logout
+from django.http import JsonResponse
+from django.db.models import Q
+
 
 def logout_view(request):
     logout(request)
@@ -119,3 +122,44 @@ def show_cart(request):
         amount = amount + value
     totalamount = amount + 40
     return render(request, 'app/addtocart.html', locals())
+
+#Quantity increment decrement using Ajax
+def plus_cart(request):
+    if request.method == "GET":
+        prod_id = request.GET['prod_id']
+        c = Cart.objects.get(Q(product=prod_id) & Q(user=request.user))
+        c.quantity+=1
+        c.save()
+        user = request.user
+        cart = Cart.objects.filter(user=user)
+        amount=0
+        for i in cart:
+            value = i.quantity * i.product.discounted_price
+            amount = amount + value
+        totalamount = amount + 40
+        data={
+            'quantity': c.quantity,
+            'amount': amount,
+            'totalamount': totalamount,
+        }
+        return JsonResponse(data)
+    
+def minus_cart(request):
+    if request.method == "GET":
+        prod_id = request.GET['prod_id']
+        c = Cart.objects.get(Q(product=prod_id) & Q(user=request.user))
+        c.quantity-=1
+        c.save()
+        user = request.user
+        cart = Cart.objects.filter(user=user)
+        amount=0
+        for i in cart:
+            value = i.quantity * i.product.discounted_price
+            amount = amount + value
+        totalamount = amount + 40
+        data={
+            'quantity': c.quantity,
+            'amount': amount,
+            'totalamount': totalamount,
+        }
+        return JsonResponse(data)
