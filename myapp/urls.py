@@ -38,4 +38,7 @@ urlpatterns = [
     path('pluscart/', views.plus_cart),
     path('minuscart/', views.minus_cart),
     path('removecart/', views.remove_cart),
+    #wishlist URLs
+    path('pluswishlist/', views.plus_wishlist, name="pluswishlist"),
+    path('minuswishlist/', views.minus_wishlist, name="minuswishlist"),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
