@@ -181,3 +181,16 @@ def remove_cart(request):
             'totalamount': totalamount
         }
         return JsonResponse(data)
+    
+#check out or place order view
+class checkout(View):
+    def get(self, request):
+        user = request.user
+        add = Customer.objects.filter(user=user)
+        cart_items=Cart.objects.filter(user=user)
+        finalamount = 0
+        for item in cart_items:
+            val = item.product.discounted_price * item.quantity
+            finalamount += val
+        totalamount = finalamount + 40
+        return render(request, 'app/checkout.html', locals())
