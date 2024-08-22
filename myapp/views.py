@@ -16,14 +16,26 @@ def logout_view(request):
 
 # Create your views here.
 def home(request):
-    return render(request, "app/home.html")
+    totalitem = 0
+    if request.user.is_authenticated:
+        totalitem = len(Cart.objects.filter(user=request.user))
+    return render(request, "app/home.html", locals())
 def about(request):
-    return render(request, "app/about.html")
+    totalitem = 0
+    if request.user.is_authenticated:
+        totalitem = len(Cart.objects.filter(user=request.user))
+    return render(request, "app/about.html", locals())
 def contact(request):
-    return render(request, "app/contact.html")
+    totalitem = 0
+    if request.user.is_authenticated:
+        totalitem = len(Cart.objects.filter(user=request.user))
+    return render(request, "app/contact.html", locals())
 #Category page for showing different types of product according to their category
 class CategoryView(View):
     def get(self, request, val):
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
         product = Product.objects.filter(category=val)
         title = Product.objects.filter(category=val).values('title')
         return render(request, "app/category.html", locals())
@@ -31,6 +43,9 @@ class CategoryView(View):
 #for category title
 class CategoryTitle(View):
     def get(self, request, val):
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
         product = Product.objects.filter(title=val)
         title = Product.objects.filter(category=product[0].category).values('title')
         return render(request, "app/category.html", locals())
@@ -38,12 +53,18 @@ class CategoryTitle(View):
 #for showing product details
 class ProductDetail(View):
     def get(self, request, pk):
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
         product = Product.objects.get(pk=pk)
         return render(request, "app/productdetail.html", locals())
     
 #User Registration
 class CustomerRegistrationView(View):
     def get(self, request):
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
         form = CustomerRegistrationForm()
         return render(request, "app/customerregistrationform.html", locals())
     def post(self, request):
@@ -59,6 +80,9 @@ class CustomerRegistrationView(View):
 #profile view    
 class ProfileView(View):
     def get(self, request):
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
         form = CustomerProfileForm()
         return render(request, 'app/profile.html', locals())
     def post(self, request):
@@ -80,12 +104,18 @@ class ProfileView(View):
     
 #address view
 def address(request):
+    totalitem = 0
+    if request.user.is_authenticated:
+        totalitem = len(Cart.objects.filter(user=request.user))
     add = Customer.objects.filter(user=request.user)
     return render(request, 'app/address.html', locals())
 
 #update address
 class updateAddress(View):
     def get(self, request, pk):
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
         add = Customer.objects.get(pk=pk)
         form = CustomerProfileForm(instance=add)
         return render(request, 'app/updateAddress.html', locals())
@@ -114,6 +144,9 @@ def add_to_cart(request):
     return redirect('/cart')
 
 def show_cart(request):
+    totalitem = 0
+    if request.user.is_authenticated:
+        totalitem = len(Cart.objects.filter(user=request.user))
     user = request.user
     cart = Cart.objects.filter(user=user)
     amount = 0

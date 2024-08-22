@@ -17,7 +17,7 @@
         <!--Navbar start-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-              <a class="navbar-brand" href=""><img src="{% static 'app/images/logo.png' %}" width="100%" height="50"/></a>
+              <a class="navbar-brand" href="/"><img src="{% static 'app/images/logo.png' %}" width="100%" height="50"/></a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -70,7 +70,7 @@
                   </ul>
                 </li>
                 <li class="nav-item mx-2">
-                  <a href="#" class="nav-link text-white">Cart 4</a>
+                  <a href="{% url 'showcart' %}" class="nav-link text-white"><span class="badge bg-danger">{% if totalitem > 0 %} {{totalitem}} {% endif %}</span>Cart</a>
                 </li>
                 <li class="nav-item mx-2">
                   <a href="#" class="nav-link text-white">Wishlist 4</a>
