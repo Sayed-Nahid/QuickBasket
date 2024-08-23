@@ -277,3 +277,11 @@ def minus_wishlist(request):
             'message': 'Wishlist Remove Successfully.',
         }
         return JsonResponse(data)
+    
+def show_wishlist(request):
+    user = request.user
+    if request.user.is_authenticated:
+        totalitem = len(Cart.objects.filter(user=request.user))
+        wishitem = len(Wishlist.objects.filter(user=request.user))
+    product = Wishlist.objects.filter(user=request.user)
+    return render(request, 'app/wishlist.html', locals())
