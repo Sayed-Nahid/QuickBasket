@@ -245,6 +245,9 @@ class checkout(View):
         user = request.user
         add = Customer.objects.filter(user=user)
         cart_items=Cart.objects.filter(user=user)
+        wishitem=0
+        if request.user.is_authenticated:
+            wishitem = len(Wishlist.objects.filter(user=request.user))
         finalamount = 0
         for item in cart_items:
             val = item.product.discounted_price * item.quantity
