@@ -285,3 +285,13 @@ def show_wishlist(request):
         wishitem = len(Wishlist.objects.filter(user=request.user))
     product = Wishlist.objects.filter(user=request.user)
     return render(request, 'app/wishlist.html', locals())
+
+
+#search view
+def search(request):
+    query = request.GET['search']
+    if request.user.is_authenticated:
+        totalitem = len(Cart.objects.filter(user=request.user))
+        wishitem = len(Wishlist.objects.filter(user=request.user))
+    product = Product.objects.filter(Q(title__icontains=query))
+    return render(request, 'app/search.html', locals())

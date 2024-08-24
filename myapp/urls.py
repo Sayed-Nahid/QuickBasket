@@ -42,4 +42,6 @@ urlpatterns = [
     path('pluswishlist/', views.plus_wishlist, name="pluswishlist"),
     path('minuswishlist/', views.minus_wishlist, name="minuswishlist"),
     path('wishlist/', views.show_wishlist, name="wishlist"),
+    #searching URL
+    path("search/", views.search, name="search"),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
